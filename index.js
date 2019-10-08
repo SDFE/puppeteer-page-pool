@@ -388,7 +388,7 @@ class PagePool {
         return this.pool.use((page) => 
           handler(page, ...args, this.pool)
         )
-        .catch((ex) => Helpers.debug('process error: %s', ex));
+        .catch((ex) => {Helpers.debug('process error: %s', ex); throw ex;});
     }
   }
 }
