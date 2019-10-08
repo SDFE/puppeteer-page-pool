@@ -385,7 +385,9 @@ class PagePool {
     } else if (typeof (handler) !== 'function') {
       Helpers.debug('handler is not a function');
     } else {
-      await this.pool.use((page) => handler(page, ...args, this.pool))
+        return this.pool.use((page) => 
+          handler(page, ...args, this.pool)
+        )
         .catch((ex) => Helpers.debug('process error: %s', ex));
     }
   }
